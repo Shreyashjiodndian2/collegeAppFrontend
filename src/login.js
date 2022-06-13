@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Typography, TextField, Checkbox } from "@mui/material";
+import { Typography, TextField, Checkbox, FormControlLabel, FormGroup, Button, Stack } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -32,68 +32,74 @@ function LoginForm() {
         <div className="login">
             <div className="login-container">
                 <div className="login-header">
-                    <Typography variant="h2">Login</Typography>
+                    <Typography variant="h3" fontWeight="semi-bold">Login</Typography>
+                    <Typography color="#514B69" variant="h5 "> See your growth and get consulting support</Typography>
                 </div>
-                <div className="login-description">
-                    <Typography> See your growth and get consulting support</Typography>
-                </div>
-                <div className="social-media-login">
-                    <h4>G</h4>
-                </div>
+                &nbsp;
                 <div className="signin-with-email-description">
-                    <h6>Sign in with email</h6>
+                    <Typography variant="h6" fontWeight="semi-bold" color="#BEBAD0" align="center"> or Sign in with email</Typography>
                 </div>
                 <div className="login-body">
                     <div className="login-body-form">
                         <div className="login-body-form-input"></div>
                         <div className="login-body-form-input">
-                            <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-                                <InputLabel htmlFor="outlined-adornment-email">
-                                    Email
-                                </InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-email"
-                                    value={values.Email}
-                                    onChange={handleChange("Email")}
-                                />
-                            </FormControl>
-                            <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-                                <InputLabel htmlFor="outlined-adornment-password">
-                                    Password
-                                </InputLabel>
-                                <OutlinedInput
-                                    id="outlined-adornment-password"
-                                    type={values.showPassword ? "text" : "password"}
-                                    value={values.password}
-                                    onChange={handleChange("password")}
-                                    endAdornment={
-                                        <InputAdornment position="end">
-                                            <IconButton
-                                                aria-label="toggle password visibility"
-                                                onClick={handleClickShowPassword}
-                                                onMouseDown={handleMouseDownPassword}
-                                                edge="end"
-                                            >
-                                                {values.showPassword ? (
-                                                    <VisibilityOff />
-                                                ) : (
-                                                    <Visibility />
-                                                )}
-                                            </IconButton>
-                                        </InputAdornment>
-                                    }
-                                    label="Password"
-                                />
-                            </FormControl>
-                        </div>
-                        <div className="remember-me-forgot-password">
-                            <div className="remember-me">
-                                <Checkbox defaultChecked={true} color="primary" />
-                                <Typography>Remember me</Typography>
-                            </div>
-                        </div>
-                        <div className="login-body-form-input">
-                            <button>Login</button>
+                            <FormGroup>
+                                <FormControl sx={{ width: "1" }} variant="outlined">
+                                    <Typography variant="h6" fontWeight="semi-bold">Email</Typography>
+                                    <TextField id="outlined-basic" placeholder="mail@fmail.com" variant="outlined" sx={{ borderWidth: 0, width:"100%" }} />
+                                </FormControl>
+                                <FormControl sx={{ width: "1" }} variant="outlined">
+                                    <Typography variant="h6" fontWeight="semi-bold">Password</Typography>
+                                    <OutlinedInput
+                                        id="outlined-adornment-password"
+                                        type={values.showPassword ? "text" : "password"}
+                                        value={values.password}
+                                        onChange={handleChange("password")}
+                                        placeholder="Password"
+                                        sx={{ borderWidth: 0, width:"100%" }}
+                                        endAdornment={
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={handleClickShowPassword}
+                                                    onMouseDown={handleMouseDownPassword}
+                                                    edge="end"
+                                                >
+                                                    {values.showPassword ? (
+                                                        <VisibilityOff />
+                                                    ) : (
+                                                        <Visibility />
+                                                    )}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        }
+                                    />
+                                </FormControl>
+                                <Stack direction="row" justifyContent="space-between">
+                                    <FormControlLabel control={<Checkbox value="remember" sx={{
+                                        color: "#5934E8", '&.Mui-checked': {
+                                            color: "#5934E8"
+                                        }
+                                    }} />} label="Remember me" />
+                                    <Button variant="text" color="primary" sx={{ color: "#5934E8", fontWeight: "bold" }}>
+                                        Forgot Password
+                                    </Button>
+                                </Stack>
+                                <FormControl>
+                                    <Button variant="contained" color="primary" sx={{ backgroundColor: "#5A34E9", borderRadius: 5 }}>
+                                        Sign in
+                                    </Button>
+                                </FormControl>
+                                &nbsp;
+                                <Stack direction="row" spacing={0}>
+                                    <Typography variant="body" align="center">
+                                        Don't have an account?
+                                    </Typography>
+                                    <Button variant="text" color="primary" sx={{ color: "#5934E8", textAlign: "start" }}>
+                                        Sign up
+                                    </Button>
+                                </Stack>
+                            </FormGroup>
                         </div>
                     </div>
                 </div>
